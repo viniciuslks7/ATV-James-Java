@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <title>Evidência PostgreSQL</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 24px;
+      color: #111;
+    }
+    h1 {
+      margin-bottom: 8px;
+      font-size: 28px;
+    }
+    p {
+      margin: 4px 0;
+      font-size: 18px;
+    }
+    code {
+      background: #f2f2f2;
+      padding: 2px 6px;
+      border-radius: 6px;
+    }
+    table {
+      margin-top: 18px;
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 18px;
+    }
+    th, td {
+      border: 1px solid #cfcfcf;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background: #f7f7f7;
+    }
+    .highlight {
+      background: #e8fff0;
+    }
+    h2 {
+      margin-top: 22px;
+      margin-bottom: 8px;
+      font-size: 22px;
+    }
+    pre {
+      background: #111;
+      color: #eee;
+      padding: 12px;
+      border-radius: 8px;
+      white-space: pre-wrap;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <h1>Evidência no PostgreSQL (bancojames)</h1>
+  <p><strong>Banco:</strong> <code>bancojames</code> | <strong>Host:</strong> <code>localhost:5433</code></p>
+  <p><strong>Usuário:</strong> <code>postgres</code> | <strong>Versão PostgreSQL:</strong> <code>16.11</code></p>
+  <p><strong>Encoding do servidor:</strong> <code>UTF8</code> | <strong>Encoding do cliente:</strong> <code>UTF8</code></p>
+  <p><strong>Data/hora da evidência (DB):</strong> <code>2026-04-14 00:47:48</code></p>
+  <p><strong>Total em categorias:</strong> <code>1</code> | <strong>Total em produtos:</strong> <code>0</code></p>
+  <p><strong>Categoria criada via Swagger:</strong> <code>Papelaria Escolar</code></p>
+  <p><strong>ID retornado na consulta:</strong> <code>1</code></p>
+
+  <h2>Registros da tabela categorias</h2>
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Nome</th></tr>
+    </thead>
+    <tbody>
+      <tr class="highlight"><td>1</td><td>Papelaria Escolar</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Registros da tabela produto</h2>
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Nome</th><th>Preço</th></tr>
+    </thead>
+    <tbody>
+      <tr><td colspan='3'>Sem registros</td></tr>
+    </tbody>
+  </table>
+
+  <h2>SQL executado para evidência</h2>
+  <pre>SELECT current_database(), current_user, current_setting(&#x27;server_encoding&#x27;), current_setting(&#x27;client_encoding&#x27;);
+SELECT id, nome FROM categorias ORDER BY id;
+SELECT id, nome, preco FROM produto ORDER BY id;</pre>
+
+  <h2>Saída bruta do psql</h2>
+  <pre>banco    | usuario  | server_encoding | client_encoding 
+------------+----------+-----------------+-----------------
+ bancojames | postgres | UTF8            | UTF8
+(1 linha)
+
+ id |       nome        
+----+-------------------
+  1 | Papelaria Escolar
+(1 linha)
+
+ id | nome | preco 
+----+------+-------
+(0 linha)</pre>
+</body>
+</html>

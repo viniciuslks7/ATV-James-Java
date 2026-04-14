@@ -31,3 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
+swagger_test.log
+gerar_evidencias.py
