@@ -36,8 +36,8 @@ Implementar e validar a expansao da API de catalogo com a entidade **Categoria**
 
 O projeto suporta os dois bancos:
 
-- **H2 (padrao)**: perfil `h2`
-- **PostgreSQL**: perfil `postgres`
+- **PostgreSQL (padrao)**: perfil `postgres`
+- **H2**: perfil `h2`
 
 Configuracao PostgreSQL (aula):
 
@@ -53,16 +53,16 @@ Existe o arquivo `src/main/resources/data.sql` com carga inicial automatica.
 
 ## Como executar
 
-### 1. Rodar com H2 (padrao)
+### 1. Rodar com PostgreSQL (padrao)
 
 ```bash
 ./mvnw spring-boot:run
 ```
 
-### 2. Rodar com PostgreSQL
+### 2. Rodar com H2
 
 ```bash
-./mvnw spring-boot:run -Dspring-boot.run.profiles=postgres
+./mvnw spring-boot:run -Dspring-boot.run.profiles=h2
 ```
 
 ## Swagger
@@ -78,10 +78,22 @@ A pasta `evidencias/` contem:
 - print de confirmacao no banco PostgreSQL
 - PDF consolidado para entrega
 
+## Estrutura de apoio (organizada)
+
+- `scripts/validacao/validar-api.ps1` -> validacao automatizada dos endpoints
+- `integracoes/insomnia/insomnia-catalogo.json` -> colecao Insomnia
+- `evidencias/` -> prints e PDF da entrega
+
 ## Testes
 
 ```bash
 ./mvnw test
+```
+
+Validador de API:
+
+```powershell
+.\scripts\validacao\validar-api.ps1
 ```
 
 ## Autor
