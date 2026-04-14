@@ -1,0 +1,218 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2026-04-14T00:00:00.000Z",
+  "__export_source": "insomnia.desktop.app:v2024.5.0",
+  "resources": [
+    {
+      "_id": "wrk_catalogo_aula01",
+      "parentId": null,
+      "_type": "workspace",
+      "name": "API Catalogo - Aula 01",
+      "description": "Colecao completa para validar Produtos, Categorias e Swagger."
+    },
+    {
+      "_id": "env_catalogo_base",
+      "parentId": "wrk_catalogo_aula01",
+      "_type": "environment",
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://localhost:8080",
+        "produto_id": 1,
+        "categoria_nome_busca": "Eletr"
+      }
+    },
+    {
+      "_id": "fld_swagger",
+      "parentId": "wrk_catalogo_aula01",
+      "_type": "request_group",
+      "name": "Swagger"
+    },
+    {
+      "_id": "fld_categorias",
+      "parentId": "wrk_catalogo_aula01",
+      "_type": "request_group",
+      "name": "Categorias"
+    },
+    {
+      "_id": "fld_produtos",
+      "parentId": "wrk_catalogo_aula01",
+      "_type": "request_group",
+      "name": "Produtos"
+    },
+    {
+      "_id": "req_swagger_json",
+      "parentId": "fld_swagger",
+      "_type": "request",
+      "name": "GET /v3/api-docs",
+      "method": "GET",
+      "url": "{{ _.base_url }}/v3/api-docs",
+      "headers": [
+        {
+          "name": "Accept",
+          "value": "application/json"
+        }
+      ]
+    },
+    {
+      "_id": "req_cat_post",
+      "parentId": "fld_categorias",
+      "_type": "request",
+      "name": "POST /api/categorias",
+      "method": "POST",
+      "url": "{{ _.base_url }}/api/categorias",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nome\": \"Moveis\"\n}"
+      }
+    },
+    {
+      "_id": "req_cat_post_invalido",
+      "parentId": "fld_categorias",
+      "_type": "request",
+      "name": "POST /api/categorias (invalido)",
+      "method": "POST",
+      "url": "{{ _.base_url }}/api/categorias",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nome\": \"\"\n}"
+      }
+    },
+    {
+      "_id": "req_cat_get_paginado",
+      "parentId": "fld_categorias",
+      "_type": "request",
+      "name": "GET /api/categorias paginado",
+      "method": "GET",
+      "url": "{{ _.base_url }}/api/categorias?page=0&size=10&sort=nome,asc",
+      "headers": [
+        {
+          "name": "Accept",
+          "value": "application/json"
+        }
+      ]
+    },
+    {
+      "_id": "req_cat_get_busca",
+      "parentId": "fld_categorias",
+      "_type": "request",
+      "name": "GET /api/categorias?nome=...",
+      "method": "GET",
+      "url": "{{ _.base_url }}/api/categorias?nome={{ _.categoria_nome_busca }}&page=0&size=10&sort=nome,asc",
+      "headers": [
+        {
+          "name": "Accept",
+          "value": "application/json"
+        }
+      ]
+    },
+    {
+      "_id": "req_prod_post",
+      "parentId": "fld_produtos",
+      "_type": "request",
+      "name": "POST /produtos",
+      "method": "POST",
+      "url": "{{ _.base_url }}/produtos",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nome\": \"Mouse Gamer\",\n  \"preco\": 199.90\n}"
+      }
+    },
+    {
+      "_id": "req_prod_post_invalido",
+      "parentId": "fld_produtos",
+      "_type": "request",
+      "name": "POST /produtos (invalido)",
+      "method": "POST",
+      "url": "{{ _.base_url }}/produtos",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nome\": \"A\",\n  \"preco\": -1\n}"
+      }
+    },
+    {
+      "_id": "req_prod_get_paginado",
+      "parentId": "fld_produtos",
+      "_type": "request",
+      "name": "GET /produtos paginado",
+      "method": "GET",
+      "url": "{{ _.base_url }}/produtos?page=0&size=10&sort=nome,asc",
+      "headers": [
+        {
+          "name": "Accept",
+          "value": "application/json"
+        }
+      ]
+    },
+    {
+      "_id": "req_prod_get_id",
+      "parentId": "fld_produtos",
+      "_type": "request",
+      "name": "GET /produtos/{id}",
+      "method": "GET",
+      "url": "{{ _.base_url }}/produtos/{{ _.produto_id }}",
+      "headers": [
+        {
+          "name": "Accept",
+          "value": "application/json"
+        }
+      ]
+    },
+    {
+      "_id": "req_prod_put",
+      "parentId": "fld_produtos",
+      "_type": "request",
+      "name": "PUT /produtos/{id}",
+      "method": "PUT",
+      "url": "{{ _.base_url }}/produtos/{{ _.produto_id }}",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nome\": \"Mouse Gamer Pro\",\n  \"preco\": 249.90\n}"
+      }
+    },
+    {
+      "_id": "req_prod_delete",
+      "parentId": "fld_produtos",
+      "_type": "request",
+      "name": "DELETE /produtos/{id}",
+      "method": "DELETE",
+      "url": "{{ _.base_url }}/produtos/{{ _.produto_id }}",
+      "headers": [
+        {
+          "name": "Accept",
+          "value": "*/*"
+        }
+      ]
+    }
+  ]
+}
